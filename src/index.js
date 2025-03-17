@@ -1,7 +1,14 @@
 const express = require("express")
 const app = express()
 const port = 3000
+const userRoutes = require("./routes/users")
 
+//MIDDLEWARE
+app.use(express.json())
+
+
+// ROUTES
+app.use("/api/users", userRoutes)
 
 // MIDDLEWARE
 app.use((req, res, next) => {
