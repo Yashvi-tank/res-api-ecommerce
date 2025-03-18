@@ -20,8 +20,19 @@ app.use((req, res, next) => {
     next();
    });
 
-   connectDB()
    
+
+//cors middleware
+app.use((req, res, next) => {
+    res.header("Access-Control-allow-origin", "*")
+    res.header(
+        "Access-Control-allow-headrs",
+        "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    )
+    next()
+})
+connectDB()
+
    // arithmetic middleware
    app.use((req, res, next) => {
     const calculation = 4 * 7; 
