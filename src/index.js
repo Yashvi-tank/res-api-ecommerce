@@ -3,6 +3,9 @@ const app = express()
 const port = 3000
 const userRoutes = require("./routes/users")
 
+//Db connection
+const connectDB = require("./utils/db")
+
 //MIDDLEWARE
 app.use(express.json())
 
@@ -16,6 +19,9 @@ app.use((req, res, next) => {
     req.requestTime = now
     next();
    });
+
+   connectDB()
+   
    // arithmetic middleware
    app.use((req, res, next) => {
     const calculation = 4 * 7; 
